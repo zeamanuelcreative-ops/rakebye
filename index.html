@@ -1,0 +1,1037 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#180d1b">
+<title>For Rakeb — A Little Birthday Surprise</title>
+
+<style>
+:root {
+  --night: #180d1b;
+  --plum: #35172c;
+  --rose: #e9a5b5;
+  --pale: #fff0e8;
+  --gold: #f3d5a0;
+  --muted: #d8bfc8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--pale);
+  font-family: Georgia, "Times New Roman", serif;
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* BACKGROUND */
+
+.sky {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, #592540 0%, #291426 45%, #130b18 100%);
+}
+
+#stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: .08;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+}
+
+main {
+  position: relative;
+  z-index: 2;
+}
+
+section {
+  min-height: 100svh;
+  padding: 5rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.wrap {
+  width: min(760px, 100%);
+  margin: auto;
+  text-align: center;
+}
+
+/* TEXT */
+
+.kicker,
+.eyebrow {
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  font: 600 .68rem/1.6 Arial, sans-serif;
+  color: var(--gold);
+}
+
+h1 {
+  font-size: clamp(3.1rem, 10vw, 7.3rem);
+  line-height: .92;
+  font-weight: 400;
+  letter-spacing: -.055em;
+  margin: 1.3rem 0;
+  color: #fff0e8;
+}
+
+h1 em,
+h2 em {
+  color: var(--rose);
+  font-weight: 400;
+}
+
+h2 {
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -.035em;
+  margin-bottom: 1.3rem;
+}
+
+p {
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  line-height: 1.85;
+  color: var(--muted);
+}
+
+.intro {
+  max-width: 570px;
+  margin: 0 auto 2rem;
+}
+
+.divider {
+  width: 70px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 2rem auto;
+}
+
+.tiny {
+  font: .8rem/1.7 Arial, sans-serif;
+  color: #c7a8b6;
+  margin-top: 1.2rem;
+}
+
+.heart {
+  display: inline-block;
+  color: var(--rose);
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1); }
+}
+
+/* BUTTONS */
+
+.cta,
+.button {
+  border: 1px solid #f3d5a080;
+  color: #fff1e8;
+  background: #f3d5a00d;
+  border-radius: 99px;
+  padding: 1rem 1.55rem;
+  transition: .3s;
+  letter-spacing: .02em;
+}
+
+.cta:hover,
+.button:hover,
+.cta:focus-visible,
+.button:focus-visible {
+  background: #f3d5a021;
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px #e9a5b51c;
+  outline: none;
+}
+
+/* LETTER */
+
+.letter {
+  max-width: 650px;
+  text-align: left;
+  margin: auto;
+  padding: clamp(1.5rem, 5vw, 3.3rem);
+  background: linear-gradient(145deg, #fff7f0f2, #f8e4dfed);
+  color: #4b2639;
+  border: 1px solid #ffe5db;
+  border-radius: 3px;
+  box-shadow: 0 25px 100px #0003;
+  position: relative;
+  transform: rotate(-.5deg);
+}
+
+.letter:before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid #c98e9a65;
+  pointer-events: none;
+}
+
+.letter .eyebrow {
+  color: #9e526b;
+}
+
+.letter p {
+  color: #654254;
+  font-size: clamp(1rem, 2.4vw, 1.15rem);
+  line-height: 1.9;
+  position: relative;
+}
+
+.letter .sign {
+  font-style: italic;
+  color: #a34e6d;
+  font-size: 1.4rem;
+  margin-bottom: 0;
+}
+
+/* PHOTO GALLERY */
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 750px;
+  margin: 35px auto;
+}
+
+.photo-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e9a5b544;
+  border-radius: 14px;
+  background: #291426;
+  min-height: 260px;
+  box-shadow: 0 10px 30px #0004;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s ease;
+}
+
+.photo-card:hover img {
+  transform: scale(1.045);
+}
+
+.photo-card span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 35px 12px 12px;
+  background: linear-gradient(transparent, #180d1bcc);
+  font: .7rem Arial, sans-serif;
+  letter-spacing: .12em;
+}
+
+/* INTERACTIVE WISHES */
+
+.wish-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(.4rem, 2vw, 1rem);
+  margin: 2.6rem 0 1.5rem;
+}
+
+.wish-star {
+  min-width: 0;
+  aspect-ratio: 1;
+  border: 1px solid #f3d5a066;
+  border-radius: 50%;
+  background: #fff7f008;
+  color: var(--gold);
+  transition: .3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.wish-star b {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 400;
+}
+
+.wish-star small {
+  font: .57rem Arial, sans-serif;
+  letter-spacing: .08em;
+}
+
+.wish-star:hover,
+.wish-star:focus-visible,
+.wish-star.active {
+  background: #f3d5a020;
+  box-shadow: 0 0 28px #f3d5a030;
+  transform: translateY(-5px);
+  outline: none;
+}
+
+.wish-output {
+  min-height: 100px;
+  max-width: 540px;
+  margin: 1.4rem auto 2rem;
+  color: #f6dce4;
+  font-size: clamp(1.1rem, 3vw, 1.45rem);
+  line-height: 1.65;
+}
+
+/* CAKE */
+
+.cake-wrap {
+  position: relative;
+  margin: 2rem auto 2.5rem;
+  width: 160px;
+  height: 150px;
+}
+
+.cake {
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+  width: 130px;
+  height: 75px;
+  border-radius: 8px 8px 15px 15px;
+  background: linear-gradient(#f2b6c4 0 20%, #f8d9d1 20% 100%);
+  box-shadow: inset 0 -8px #d986a0, 0 15px 35px #0003;
+}
+
+.cake:before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: -12px;
+  width: 140px;
+  height: 25px;
+  border-radius: 50%;
+  background: #fff0e8;
+  border-bottom: 5px solid #d98aa2;
+}
+
+.cake:after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 8px;
+  width: 8px;
+  height: 45px;
+  border-radius: 8px;
+  background: #fff0e8;
+  box-shadow: 25px 0 #fff0e8, 50px 0 #fff0e8,
+              75px 0 #fff0e8, 100px 0 #fff0e8;
+}
+
+.candle {
+  position: absolute;
+  z-index: 2;
+  left: 75px;
+  top: 29px;
+  width: 10px;
+  height: 40px;
+  border-radius: 3px;
+  background: repeating-linear-gradient(
+    135deg, #fff0e8 0 5px, #d77d9c 5px 10px
+  );
+}
+
+.flame {
+  position: absolute;
+  z-index: 3;
+  left: 73px;
+  top: 8px;
+  width: 14px;
+  height: 21px;
+  border-radius: 60% 40% 60% 40%;
+  background: #ffd98c;
+  transform: rotate(8deg);
+  box-shadow: 0 0 24px #ffc86d;
+  animation: flicker .7s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+  to {
+    transform: rotate(-8deg) scale(.88);
+    opacity: .8;
+  }
+}
+
+/* FINAL */
+
+.final-note {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.signature {
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--rose);
+  margin-top: 2rem;
+}
+
+.footer {
+  font: .72rem/1.7 Arial, sans-serif;
+  letter-spacing: .1em;
+  color: #987b8c;
+}
+
+/* ANIMATIONS */
+
+.hidden {
+  display: none !important;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .9s ease, transform .9s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.float-heart {
+  position: fixed;
+  z-index: 3;
+  pointer-events: none;
+  animation: floatUp 2.8s ease-out forwards;
+  color: #e9a5b5;
+}
+
+@keyframes floatUp {
+  from {
+    opacity: 0;
+    transform: translateY(0) scale(.6);
+  }
+  15% { opacity: .9; }
+  to {
+    opacity: 0;
+    transform: translateY(-180px) scale(1.4) rotate(22deg);
+  }
+}
+
+/* MOBILE */
+
+@media(max-width: 550px) {
+  section {
+    padding: 4rem 1rem;
+  }
+
+  .photo-gallery {
+    gap: 9px;
+  }
+
+  .photo-card {
+    min-height: 170px;
+  }
+
+  .photo-card img {
+    height: 190px;
+  }
+
+  .wish-grid {
+    gap: .3rem;
+  }
+
+  .wish-star small {
+    font-size: .48rem;
+    letter-spacing: 0;
+  }
+
+  .wish-star b {
+    font-size: 1.4rem;
+  }
+
+  .letter {
+    padding: 1.4rem;
+  }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="sky">
+  <canvas id="stars"></canvas>
+</div>
+
+<div class="grain"></div>
+
+<main>
+
+<!-- 1. OPENING -->
+
+<section id="opening">
+  <div class="wrap">
+
+    <div class="eyebrow">
+      A little note for someone lovely
+    </div>
+
+    <h1>For <em>Rakeb.</em></h1>
+
+    <p class="intro">
+      I'm five days late. I know.<br>
+      But I didn't want this to be just another
+      message that disappears in a chat.
+    </p>
+
+    <button class="button" id="begin">
+      There's a little story here ↗
+    </button>
+
+    <div class="tiny">
+      Best experienced slowly, with a little music of your own choice.
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="tiny">
+      <span class="heart">♥</span> made just for you
+    </div>
+
+  </div>
+</section>
+
+
+<!-- 2. PERSONAL LETTER -->
+
+<section id="letter-section">
+  <div class="wrap reveal">
+
+    <div class="eyebrow">First, an apology</div>
+
+    <div class="letter">
+
+      <div class="eyebrow">Dear Rakeb,</div>
+
+      <p>
+  I owe you a birthday wish — and an apology
+  for being late.
+</p>
+
+<p>
+  I'm sorry I missed the day itself. I didn't
+  want to send just another ordinary birthday
+  message; I wanted to make you something a
+  little different, with some thought behind it.
+</p>
+
+<p>
+  I still remember the first day in class.
+  You were sitting on the left side, and somehow
+  that little moment stayed in my memory.
+  Maybe it was one of those ordinary moments
+  that you don't realize you'll remember later.
+</p>
+
+<p>
+  And honestly, one of the first things I noticed
+  about you was your eyes. There's something
+  genuinely beautiful about them. They have a
+  way of catching attention without even trying.
+  It's difficult to explain, but they're the kind
+  of detail that makes someone memorable.
+</p>
+
+<p>
+  We only got to know each other this year,
+  in Grade 11, Section B, but I'm glad our
+  paths crossed. Sometimes the people we meet
+  in a new school year make it a little more
+  memorable.
+</p>
+
+<p>
+  It took me longer than I planned, so this
+  isn't an excuse. It's simply my way of saying
+  your birthday deserved a little extra thought.
+</p>
+
+<p>
+  I hope you can forgive the delay and accept
+  this late wish with the good intention it
+  comes with.
+</p>
+
+<p class="sign">With warm wishes,</p>
+
+<p class="sign">
+  Someone who wanted to make you smile.
+</p>
+
+    <div style="margin-top:2.5rem">
+      <button class="button next" data-target="photos-section">
+        Continue the story ↓
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- 3. ALL SIX PHOTOS -->
+
+<section id="photos-section">
+  <div class="wrap reveal">
+
+    <div class="kicker">
+      A little collection of memories
+    </div>
+
+    <h2>
+      Beautiful moments.<br>
+      <em>Just for you.</em>
+    </h2>
+
+    <p>
+      Six pictures, one little birthday surprise.
+    </p>
+
+    <div class="photo-gallery">
+
+      <div class="photo-card">
+        <img src="C:\Users\zeamanuel samson\Desktop\rak\rakeb-01.png" alt="Rakeb photo 1">
+        <span>PHOTO 01 / 06</span>
+      </div>
+
+      <div class="photo-card">
+        <img src="c:\Users\zeamanuel samson\Desktop\rak\rakeb-02.png" alt="Rakeb photo 2">
+        <span>PHOTO 02 / 06</span>
+      </div>
+
+      <div class="photo-card">
+        <img src="C:\Users\zeamanuel samson\Desktop\rak\rakeb-03.png" alt="Rakeb photo 3">
+        <span>PHOTO 03 / 06</span>
+      </div>
+
+      <div class="photo-card">
+        <img src="C:\Users\zeamanuel samson\Desktop\rak\rakeb-04.png" alt="Rakeb photo 4">
+        <span>PHOTO 04 / 06</span>
+      </div>
+
+      <div class="photo-card">
+        <img src="C:\Users\zeamanuel samson\Desktop\rak\rakeb-05.png" alt="Rakeb photo 5">
+        <span>PHOTO 05 / 06</span>
+      </div>
+
+      <div class="photo-card">
+        <img src="C:\Users\zeamanuel samson\Desktop\rak\rakeb-06.png" alt="Rakeb photo 6">
+        <span>PHOTO 06 / 06</span>
+      </div>
+
+    </div>
+
+    <button class="button next" data-target="wishes-section">
+      Continue to your wishes ✨
+    </button>
+
+  </div>
+</section>
+
+
+<!-- 4. FIVE INTERACTIVE WISHES -->
+
+<section id="wishes-section">
+  <div class="wrap reveal">
+
+    <div class="kicker">Five days · Five wishes</div>
+
+    <h2>
+      Choose a star.<br>
+      <em>Make a wish.</em>
+    </h2>
+
+    <p>
+      Tap each star to discover a little wish for your new year.
+    </p>
+
+    <div class="wish-grid">
+
+      <button class="wish-star"
+        data-wish="I hope your ordinary days are filled with little reasons to smile.">
+        <b>✧</b>
+        <small>WISH ONE</small>
+      </button>
+
+      <button class="wish-star"
+        data-wish="I hope you find the courage to go after the things that matter to you.">
+        <b>✦</b>
+        <small>WISH TWO</small>
+      </button>
+
+      <button class="wish-star"
+        data-wish="I hope kind people, honest laughter, and lovely surprises find their way to you.">
+        <b>✧</b>
+        <small>WISH THREE</small>
+      </button>
+
+      <button class="wish-star"
+        data-wish="I hope you make memories that bring a smile to your face for years to come.">
+        <b>✦</b>
+        <small>WISH FOUR</small>
+      </button>
+
+      <button class="wish-star"
+        data-wish="And I hope you always remember that being yourself is already something special.">
+        <b>✧</b>
+        <small>WISH FIVE</small>
+      </button>
+
+    </div>
+
+    <div class="wish-output" id="wish-output" aria-live="polite">
+      Your first wish is waiting among the stars.
+    </div>
+
+    <button class="cta" id="to-cake">
+      One last birthday surprise 🎂
+    </button>
+
+  </div>
+</section>
+
+
+<!-- 5. BIRTHDAY FINALE -->
+
+<section id="birthday-section">
+  <div class="wrap reveal">
+
+    <div class="eyebrow">
+      At last, the birthday wish
+    </div>
+
+    <h2>
+      Happy belated<br>
+      <em>birthday, Rakeb.</em>
+    </h2>
+
+    <div class="cake-wrap">
+
+      <div class="cake"></div>
+      <div class="candle"></div>
+      <div class="flame"></div>
+
+    </div>
+
+    <div class="final-note">
+
+      <p>
+        I hope this new year of your life is gentle
+        with your heart and generous with your dreams.
+        May you laugh often, grow into everything
+        you're hoping to become, and collect moments
+        that make you think, "I'm really glad I got
+        to experience that."
+      </p>
+
+      <p>
+        And even though this wish arrived five days
+        late, I hope the smile it brings arrives
+        right on time.
+      </p>
+
+      <p style="color:#f1d4df">
+        Some people make the world feel a little
+        brighter just by being themselves. I hope
+        this year reminds you how much brightness
+        you carry.
+      </p>
+
+    </div>
+
+    <div class="signature">
+      Happy birthday, once again <span class="heart">♥</span>
+    </div>
+
+    <div style="margin:2.2rem 0">
+
+      <button class="button" id="surprise">
+        One last little surprise ✨
+      </button>
+
+    </div>
+
+    <p class="hidden" id="surprise-note" style="color:var(--gold)">
+      If this little page made you smile, then it
+      did exactly what I hoped it would.
+    </p>
+
+    <div class="divider"></div>
+
+    
+
+  </div>
+</section>
+
+</main>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+(() => {
+
+  /* STAR BACKGROUND */
+
+  const canvas = document.getElementById("stars");
+  const ctx = canvas.getContext("2d");
+
+  let stars = [];
+  let w = 0;
+  let h = 0;
+
+  function resize() {
+
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    w = window.innerWidth;
+    h = window.innerHeight;
+
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+
+    canvas.style.width = w + "px";
+    canvas.style.height = h + "px";
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    stars = Array.from({
+      length: Math.min(130, Math.floor(w * h / 8500))
+    }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 1.5 + .3,
+      a: Math.random() * .65 + .15,
+      s: Math.random() * .012 + .003,
+      p: Math.random() * 6.28
+    }));
+
+  }
+
+  function draw(t) {
+
+    ctx.clearRect(0, 0, w, h);
+
+    for (const s of stars) {
+
+      const alpha =
+        s.a * (.65 + .35 * Math.sin(t * s.s + s.p));
+
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+
+      ctx.fillStyle = `rgba(255,225,230,${alpha})`;
+
+      ctx.fill();
+
+    }
+
+    requestAnimationFrame(draw);
+
+  }
+
+  resize();
+  requestAnimationFrame(draw);
+
+  window.addEventListener("resize", resize);
+
+
+  /* SECTION NAVIGATION */
+
+  document.getElementById("begin").addEventListener("click", () => {
+
+    document.getElementById("letter-section")
+      .scrollIntoView({ behavior: "smooth" });
+
+  });
+
+  document.querySelectorAll(".next").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const target = document.getElementById(button.dataset.target);
+
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+
+    });
+
+  });
+
+
+  /* FIVE INTERACTIVE WISHES */
+
+  const wishButtons = document.querySelectorAll(".wish-star");
+
+  const wishOutput = document.getElementById("wish-output");
+
+  wishButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      wishButtons.forEach(star => {
+        star.classList.remove("active");
+      });
+
+      button.classList.add("active");
+
+      wishOutput.textContent = button.dataset.wish;
+
+      createHearts(button);
+
+    });
+
+  });
+
+
+  /* HEART ANIMATION */
+
+  function createHearts(element) {
+
+    const rect = element.getBoundingClientRect();
+
+    for (let i = 0; i < 7; i++) {
+
+      const heart = document.createElement("span");
+
+      heart.className = "float-heart";
+
+      heart.textContent = ["♥", "✧", "✦"][i % 3];
+
+      heart.style.left =
+        (rect.left + rect.width / 2 + (Math.random() - .5) * 70) + "px";
+
+      heart.style.top =
+        (rect.top + rect.height / 2) + "px";
+
+      heart.style.fontSize =
+        (12 + Math.random() * 12) + "px";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 2900);
+
+    }
+
+  }
+
+
+  /* GO TO BIRTHDAY CAKE */
+
+  document.getElementById("to-cake").addEventListener("click", () => {
+
+    document.getElementById("birthday-section")
+      .scrollIntoView({ behavior: "smooth" });
+
+  });
+
+
+  /* FINAL SURPRISE */
+
+  document.getElementById("surprise").addEventListener("click", () => {
+
+    const note = document.getElementById("surprise-note");
+
+    note.classList.remove("hidden");
+
+    note.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+    for (let i = 0; i < 15; i++) {
+
+      setTimeout(() => {
+
+        createHearts(document.getElementById("surprise"));
+
+      }, i * 100);
+
+    }
+
+    document.getElementById("surprise").textContent =
+      "A little smile, hopefully ♥";
+
+  });
+
+
+  /* SCROLL REVEAL ANIMATION */
+
+  const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+
+    });
+
+  }, {
+    threshold: .12
+  });
+
+  document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+  });
+
+})();
+</script>
+
+</body>
+</html>
